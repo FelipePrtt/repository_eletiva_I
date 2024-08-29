@@ -13,7 +13,7 @@
             <div class="col">
                 <label for="valor_a" class="form-label">Informe o valor A</label>
                 <div class="col-1">
-                    <input type="number" id="valor_a" name="valor_a" placeholder="1° valor..." class="form-control">
+                    <input type="number" id="valor_a" name="valor_a" placeholder="Valor A" class="form-control">
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
             <div class="col">
                 <label for="valor_b" class="form-label">Informe o valor B</label>
                 <div class="col-1">
-                    <input type="number" id="valor_b" name="valor_b" placeholder="2° valor..." class="form-control">
+                    <input type="number" id="valor_b" name="valor_b" placeholder="Valor B" class="form-control">
                 </div>
             </div>
         </div>

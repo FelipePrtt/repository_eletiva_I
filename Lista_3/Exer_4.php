@@ -13,7 +13,7 @@
             <div class="col">
                 <label for="preco" class="form-label">Informe o preço do produto</label>
                 <div class="col-1">
-                    <input type="number" id="preco" name="preco" placeholder="1° valor..." class="form-control">
+                    <input type="number" id="preco" name="preco" placeholder="Preço" class="form-control">
                 </div>
             </div>
         </div>
