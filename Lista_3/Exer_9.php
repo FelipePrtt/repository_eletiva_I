@@ -13,13 +13,13 @@
             <div class="col">
                 <label for="fat" class="form-label">Informe um número</label>
                 <div class="col-1">
-                    <input type="number" id="fat" name="fat" placeholder="Número..." class="form-control">
+                    <input type="number" id="fat" name="fat" placeholder="N!..." class="form-control">
                 </div>
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-2">
-                <button type="submite" class="btn btn-primary">Iniciar Contagem</button>
+                <button type="submite" class="btn btn-primary">Calcular Fatorial</button>
             </div>
         </div>
     </form>

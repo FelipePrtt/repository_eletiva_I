@@ -12,12 +12,13 @@
         {
             $fat = (int)$_POST['fat'] ?? 0;
 
-            $resultado = 0;
+            $resultado = 1;
 
-            for ($i = $fat; $i <= $fat; $i - 1)
+            for ($i = $fat; $i > 0; $i--)
             {
-                $resultado = $resultado ($fat * $i); 
+                $resultado *= $i; 
             }
+            echo "<p>Fatorial de $fat é $resultado.</p>";
         }catch (Exception $e)
         {
             echo "Erro:".$e->getMessage();
