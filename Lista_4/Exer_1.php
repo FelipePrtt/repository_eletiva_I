@@ -19,7 +19,7 @@
         </div>
         <div class="row mt-4">
             <div class="col-2">
-                <button type="submite" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
         </div>
     </form>

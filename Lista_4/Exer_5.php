@@ -7,27 +7,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
   <body>
-    <h1>Exercício 3</h1>
-    <form action="Exer_3_resp.php" method="POST" class="m-4">
+    <h1>Exercício 5</h1>
+    <form action="Exer_5_resp.php" method="POST" class="m-4">
         <div class="row mt-4">
             <div class="col">
-                <label for="texto1" class="form-label">Escreva uma palavra</label>
+                <label for="numero" class="form-label">Informe um valor</label>
                 <div class="col-1">
-                    <input type="text" id="texto1" name="texto1" class="form-control">
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col">
-                <label for="texto2" class="form-label">Escreva uma palavra</label>
-                <div class="col-1">
-                    <input type="text" id="texto2" name="texto2" class="form-control">
+                    <input type="number" id="numero" name="numero" class="form-control">
                 </div>
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-2">
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-primary">Calcula raiz</button>
             </div>
         </div>
     </form>
