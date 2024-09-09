@@ -1,3 +1,7 @@
+<?php
+    declare(strict_types = 1);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,21 +11,26 @@
 </head>
 <body>
     <?php
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
-        try
-        {
-            $dia = $_POST['dia'] ?? 0;
-            $mes = $_POST['mes'] ?? 0;
-            $ano = $_POST['ano'] ?? 0;
-
-            if (checkdate($mes, $dia, $ano))
+        function verificar_data(int $d, int $m, int $a):void{
+            if (checkdate($m, $d, $a))
             {
-                echo "<p>$dia / $mes / $ano</p>";
+                echo "<p>Data válida!</p>";
+                echo "<p>$d / $m / $a</p>";
             }
             else
             {
                 echo "<p>Data inválida!</p>";
-            }    
+            }  
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        try
+        {
+            $dia = (int) $_POST['dia'] ?? 0;
+            $mes = (int) $_POST['mes'] ?? 0;
+            $ano = (int) $_POST['ano'] ?? 0;
+
+            echo verificar_data($dia, $mes, $ano);    
         }catch (Exception $e)
         {
             echo "Erro:".$e->getMessage();
