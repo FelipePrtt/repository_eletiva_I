@@ -14,9 +14,9 @@
                 ?>
                 <div class="col-3 mb-3">
                     <label for="nome<?php echo $i; ?>" class="form-label">Nome <?php echo $i; ?></label>
-                    <input type="text" class="form-control" id="nome<?php echo $i; ?>" name="vet_nomes[]" required>
+                    <input type="text" class="form-control" id="nome<?php echo $i; ?>" name="nomes[]" required>
                     <label for="telefone<?php echo $i; ?>" class="form-label">Telefone <?php echo $i; ?></label>
-                    <input type="text" class="form-control" id="telefone<?php echo $i; ?>" name="vet_telefones[]" required>
+                    <input type="text" class="form-control" id="telefone<?php echo $i; ?>" name="telefones[]" required>
                 </div>
                 <?php
             }
@@ -38,16 +38,27 @@
   {
     try
       {
-        //Reformular, apenas teste de recebimento de vetor do método post
-        $vet_nomes = $_POST['vet_nomes'];
-        $vet_telefones = $_POST['vet_telefones'];
+        //Recebe os vetores vindos do post
+        $vet_nomes = $_POST['nomes'];
+        $vet_telefones = $_POST['telefones'];
 
-        for ($i = 0; $i < 5; $i ++)
+        $mapa_contatos = []; //mapa ordenado/array dos contatos
+
+        //for que faz a ligação das chaves e valores 
+        for ($i = 0; $i < count($vet_nomes); $i ++)
         {
-          print_r($vet_nomes[$i]);
-          print_r($vet_telefones[$i]);
-        }
+          $ind_nome = $vet_nomes[$i];
+          $ind_telefone = $vet_telefones[$i];
 
+          $mapa_contatos[$ind_nome] = $ind_telefone;
+        }
+        
+        //Mostra os conteudos do mapa
+        echo "<p>LISTA DE CONTATOS</p>";
+        foreach ($mapa_contatos as $nome => $telefone) 
+        {
+          echo "<p>Informações do contato: $cont $nome -> $telefone</p>";          
+        }
       }
       catch (Exception $e)
       {
