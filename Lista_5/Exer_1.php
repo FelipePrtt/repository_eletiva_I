@@ -8,13 +8,15 @@
   </head>
   <body>
     <h1>Exercício 1</h1>
-    <form action="Exer_1_resp.php" method="POST" class="m-4">
+    <form action="" method="POST" class="m-4">
         <?php
             for ($i = 1; $i <= 5; $i++) {
                 ?>
-                <div class="mb-3">
-                    <label for="input<?php echo $i; ?>" class="form-label">Valor <?php echo $i; ?></label>
-                    <input type="text" class="form-control" id="input<?php echo $i; ?>" name="valores[]" required>
+                <div class="col-3 mb-3">
+                    <label for="nome<?php echo $i; ?>" class="form-label">Nome <?php echo $i; ?></label>
+                    <input type="text" class="form-control" id="nome<?php echo $i; ?>" name="vet_nomes[]" required>
+                    <label for="telefone<?php echo $i; ?>" class="form-label">Telefone <?php echo $i; ?></label>
+                    <input type="text" class="form-control" id="telefone<?php echo $i; ?>" name="vet_telefones[]" required>
                 </div>
                 <?php
             }
@@ -28,3 +30,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
+<?php 
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST")
+  {
+    try
+      {
+        //Reformular, apenas teste de recebimento de vetor do método post
+        $vet_nomes = $_POST['vet_nomes'];
+        $vet_telefones = $_POST['vet_telefones'];
+
+        for ($i = 0; $i < 5; $i ++)
+        {
+          print_r($vet_nomes[$i]);
+          print_r($vet_telefones[$i]);
+        }
+
+      }
+      catch (Exception $e)
+      {
+      echo "Erro:".$e->getMessage();
+      }
+  }
+?>
