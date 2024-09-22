@@ -10,7 +10,7 @@
     <h1>Exercício 2</h1>
     <form action="" method="POST" class="m-4">
         <?php
-            for ($i = 0; $i < 2; $i++) {
+            for ($i = 0; $i < 5; $i++) {
                 ?>
                 <div class="col-3 mb-5">
                     <label for="nome<?php echo $i; ?>" class="form-label">Nome do aluno <?php echo $i + 1; ?></label>
