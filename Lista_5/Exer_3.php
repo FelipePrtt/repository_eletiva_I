@@ -44,37 +44,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $vet_precos = $_POST['valores'];
 
         $mapa_completo = [];
-        $mapa_nome_valor = [];
-
 
         for ($i = 0; $i < count($vet_nomes); $i++)
-        {
+        {   
+
             $codigo = $vet_codigos[$i];
             $nome = $vet_nomes[$i];
             $preco = $vet_precos[$i];
 
             if ($preco > 100)
             {
-                $preco_desconto = $preco - ($preco * 0.10);
-                $mapa_nome_valor[$nome] = $preco_desconto;
+                $preco = $preco - ($preco * 0.10);
             }
-            else{
-                $mapa_nome_valor = [$nome  => $preco];
-            }
-
-            $mapa_completo[$codigo] = $mapa_nome_valor;
+            
+            $mapa_nome_valor = [$nome, $preco];
+            
+            $mapa_completo[$codigo][] = $mapa_nome_valor;
+          
         }
 
-        foreach($mapa_completo as $codigo => $conjunto)
-        {
+        asort($mapa_completo);
+        
+        foreach ($mapa_completo as $codigo => $conjunto) {
             echo "<p>Código do Produto: $codigo</p>";
-            foreach($conjunto as $nome => $preco)
-            {
-                echo "<p>Nome: $nome</p>";
-                echo "<p>Valor: R$".number_format($preco, 2, ',', '.')."</p>";
+            foreach ($conjunto as $item) {
+                echo "<p>Nome: " . $item[0] . "</p>";
+                echo "<p>Valor: R$" . number_format($item[1], 2, ',', '.') . "</p>";
             }
         }
-
+        
     } catch (Exception $e) {
         echo "Erro: " . $e->getMessage();
     }
