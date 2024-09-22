@@ -10,13 +10,21 @@
     <h1>Exercício 2</h1>
     <form action="" method="POST" class="m-4">
         <?php
-            for ($i = 1; $i <= 5; $i++) {
+            for ($i = 0; $i < 2; $i++) {
                 ?>
-                <div class="col-3 mb-3">
-                    <label for="nome<?php echo $i; ?>" class="form-label">Nome <?php echo $i; ?></label>
-                    <input type="text" class="form-control" id="nome<?php echo $i; ?>" name="nomes[]" required>
-                    <label for="telefone<?php echo $i; ?>" class="form-label">Telefone <?php echo $i; ?></label>
-                    <input type="text" class="form-control" id="telefone<?php echo $i; ?>" name="telefones[]" required>
+                <div class="col-3 mb-5">
+                    <label for="nome<?php echo $i; ?>" class="form-label">Nome do aluno <?php echo $i + 1; ?></label>
+                    <input  type="text" class="form-control" id="nome<?php echo $i; ?>" name="nomes[]" required>
+                    <?php
+                    for ($c = 1; $c <= 3; $c++){
+                    ?>
+                    <div class="col-2">
+                        <label for="nota<?php echo $i, $c; ?>" class="form-label">Nota <?php echo $c; ?></label>
+                        <input type="number" class="form-control" id="nota<?php echo $i, $c; ?>" name="notas[<?php echo $i; ?>][]" required>
+                    </div>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <?php
             }
@@ -31,18 +39,40 @@
   </body>
 </html>
 
-
 <?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try 
+    {
+      $vet_nomes = $_POST['nomes'];
+      $vet_notas = $_POST['notas'];
 
-  if ($_SERVER["REQUEST_METHOD"] == "POST")
-  {
-    try
-      {
+      $medias = [];
+      $mapas  = [];
 
-      }
-      catch (Exception $e)
+      for ($col = 0; $col < count($vet_notas); $col++)
       {
-      echo "Erro:".$e->getMessage();
+        for ($lin = 0; $lin < count($vet_notas[$col]); $lin++)
+        {
+          $soma += $vet_notas[$col][$lin];
+        }
+        $medias[$col] = ($soma / 3);
+        $soma = 0;
       }
-  }
+
+      for ($i = 0; $i < count($vet_nomes); $i++)
+      {
+        $mapa[$vet_nomes[$i]] = $medias[$i];
+      }
+
+      arsort($mapa);
+
+      foreach($mapa as $nome => $notas)
+      {
+        echo "<p>$nome: $notas</p>";
+      }
+
+    } catch (Exception $e) {
+        echo "Erro: " . $e->getMessage();
+    }
+}
 ?>
