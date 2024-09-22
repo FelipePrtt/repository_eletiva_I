@@ -7,17 +7,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
   <body>
-    <h1>Exercício 4</h1>
+    <h1>Exercício 5</h1>
     <form action="" method="POST" class="m-4">
         <?php
             for ($i = 0; $i < 5; $i++) {
                 ?>
                 <div class="col-3 mb-5">
-                    <label for="nome<?php echo $i; ?>" class="form-label">Nome do <?php echo $i + 1; ?>° item</label>
+                    <label for="nome<?php echo $i; ?>" class="form-label">Nome do <?php echo $i + 1; ?>° livro</label>
                     <input type="text" class="form-control" id="nome<?php echo $i;?>" name="nomes[]">
 
-                    <label for="preco<?php echo $i; ?>" class="form-label">Valor do <?php echo $i + 1;?>° item</label>
-                    <input type="number" class="form-control" id="preco<?php echo $i; ?>" name="precos[]">
+                    <label for="qtde_livro<?php echo $i; ?>" class="form-label">Quantidade em estoque</label>
+                    <input type="number" class="form-control" id="qtde_livro<?php echo $i; ?>" name="qtde[]">
                 </div>
                 <?php
             }
@@ -37,27 +37,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try 
     {
         $vet_nomes = $_POST['nomes'];
-        $vet_precos = $_POST['precos'];
+        $vet_qtde = $_POST['qtde'];
 
-        $mapa = [];
+        $estoque = [];
 
         for ($i = 0; $i < count($vet_nomes); $i++)
         {
             $nome = $vet_nomes[$i];
-            $preco = $vet_precos[$i];
+            $qtde = $vet_qtde[$i];
 
-            //aplicação do imposto
-            $preco += $preco * 0.15;
+            if ($qtde < 5)
+            {
+                echo "<p>O livro $nome está em baixo estoque!</p>";
+                echo "<p>Quantidade em estoque: $qtde</p>";
+            }
 
-            $mapa[$nome] = $preco;
+            $mapa[$nome] = $qtde;
         }
 
-        asort($mapa);
+        ksort($mapa);
 
-        foreach($mapa as $nome => $preco)
+        foreach($mapa as $nome => $qtde)
         {
-            echo "<p>Nome do item: $nome</p>";
-            echo "<p>Preço do item: $preco</p>";
+            echo "<p>Nome do livro: $nome</p>";
+            echo "<p>Quantidade em estoque: $qtde</p>";
         }
     } catch (Exception $e) {
         echo "Erro: " . $e->getMessage();
