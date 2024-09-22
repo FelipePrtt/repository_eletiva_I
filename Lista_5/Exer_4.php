@@ -7,20 +7,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
   <body>
-    <h1>Exercício 3</h1>
+    <h1>Exercício 4</h1>
     <form action="" method="POST" class="m-4">
         <?php
             for ($i = 0; $i < 5; $i++) {
                 ?>
                 <div class="col-3 mb-5">
-                    <label for="codigo<?php echo $i; ?>" class="form-label">Código do <?php echo $i + 1; ?>° produto</label>
-                    <input type="number" class="form-control" id="codigo<?php echo $i; ?>" name="codigos[]">
-
-                    <label for="nome<?php echo $i; ?>" class="form-label">Nome do <?php echo $i + 1; ?>° produto</label>
+                    <label for="nome<?php echo $i; ?>" class="form-label">Nome do <?php echo $i + 1; ?>° item</label>
                     <input type="text" class="form-control" id="nome<?php echo $i;?>" name="nomes[]">
 
-                    <label for="valor<?php echo $i; ?>" class="form-label">Valor do <?php echo $i + 1;?>° produto</label>
-                    <input type="number" class="form-control" id="valor<?php echo $i; ?>" name="valores[]">
+                    <label for="preco<?php echo $i; ?>" class="form-label">Valor do <?php echo $i + 1;?>° item</label>
+                    <input type="number" class="form-control" id="preco<?php echo $i; ?>" name="precos[]">
                 </div>
                 <?php
             }
@@ -39,42 +36,29 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try 
     {
-        $vet_codigos = $_POST['codigos'];
         $vet_nomes = $_POST['nomes'];
-        $vet_precos = $_POST['valores'];
+        $vet_precos = $_POST['precos'];
 
-        $mapa_completo = [];
-        $mapa_nome_valor = [];
-
+        $mapa = [];
 
         for ($i = 0; $i < count($vet_nomes); $i++)
         {
-            $codigo = $vet_codigos[$i];
             $nome = $vet_nomes[$i];
             $preco = $vet_precos[$i];
 
-            if ($preco > 100)
-            {
-                $preco_desconto = $preco - ($preco * 0.10);
-                $mapa_nome_valor[$nome] = $preco_desconto;
-            }
-            else{
-                $mapa_nome_valor = [$nome  => $preco];
-            }
+            //aplicação do imposto
+            $preco += $preco * 0.15;
 
-            $mapa_completo[$codigo] = $mapa_nome_valor;
+            $mapa[$nome] = $preco;
         }
 
-        foreach($mapa_completo as $codigo => $conjunto)
+        krsort($mapa);
+
+        foreach($mapa as $nome => $preco)
         {
-            echo "<p>Código do Produto: $codigo</p>";
-            foreach($conjunto as $nome => $preco)
-            {
-                echo "<p>Nome: $nome</p>";
-                echo "<p>Valor: R$".number_format($preco, 2, ',', '.')."</p>";
-            }
+            echo "<p>Nome do item: $nome</p>";
+            echo "<p>Preço do item: $preco</p>";
         }
-
     } catch (Exception $e) {
         echo "Erro: " . $e->getMessage();
     }
