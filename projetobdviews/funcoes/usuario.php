@@ -61,7 +61,7 @@ function todosUsuario():array
 function retornarUsuarioPorId(int $id): ?array
 {
     global $pdo;
-    $stament = $pdo->prepare("SELEC * FROM usuario WHERE id = ? AND nivel <> 'adm'");
+    $stament = $pdo->prepare("SELECT * FROM usuario WHERE id = ? AND nivel <> 'adm'");
     $stament->execute([$id]);
     $usuario = $stament->fetch(PDO::FETCH_ASSOC);
     return $usuario ? $usuario : null;
