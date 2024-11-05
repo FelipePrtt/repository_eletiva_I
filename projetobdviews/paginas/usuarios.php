@@ -1,6 +1,8 @@
 <?php 
     require_once 'cabecalho.php'; 
     require_once 'navbar.php'; 
+    require_once '../funcoes/usuarios.php/';
+
 ?>
 
 <div class="container mt-5">
@@ -17,7 +19,10 @@
             </tr>
         </thead>
         <tbody>
-            
+            <?php
+                $usuarios = todosUsuarios();
+                foreach ($usuarios as $u): 
+            ?>
             <tr>
                 <td>1</td>
                 <td>Usuario</td>
@@ -27,7 +32,9 @@
                     <a href="excluir_usuario.php" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
-            
+            <?php
+            endforeach;
+            ?>
         </tbody>
     </table>
 </div>
