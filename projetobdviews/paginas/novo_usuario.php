@@ -4,31 +4,28 @@
     require_once '../funcoes/usuarios.php';
 
     $erro = "";
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-        try{
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        try {
             $nome = $_POST['nome'];
             $email = $_POST['email'];
             $senha = $_POST['senha'];
             $nivel = 'colab';
 
-            if (empty($nome) || empty($email) || empty($senha))
-            {
+            if (empty($nome) || empty($email) || empty($senha)) {
                 $erro = "Todos os campos são obrigatórios!";
-            } else{
-                if (novo_Usuario($nome, $email, $senha, $nivel))
-                {
+            } else {
+                if (novoUsuario($nome, $email, $senha, $nivel)){
                     header('Location: usuarios.php');
                     exit();
-                } else{
-                    $erro = "Erro aos criar o usuário;";
+                } else {
+                    $erro = "Erro ao criar o usuário!";
                 }
             }
-        }catch (Exception $e){
+        } catch (Exception $e){
             $erro = "Erro: ".$e->getMessage();
         }
     }
+
 ?>
 
 <div class="container mt-5">
