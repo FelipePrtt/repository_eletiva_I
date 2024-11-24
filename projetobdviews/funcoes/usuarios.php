@@ -8,8 +8,7 @@ function login(string $email, string $senha){
     global $pdo;
     
     //Inserção do usuário adm
-    $stament = 
-        $pdo->query("SELECT * FROM usuario WHERE email = 'adm@adm.com'");
+    $stament = $pdo->query("SELECT * FROM usuario WHERE email = 'adm@adm.com'");
     $usuario = $stament->fetchAll(PDO::FETCH_ASSOC);
     //verifica se o usuário não existe, se não existir, vamos criar
     if (!$usuario){
