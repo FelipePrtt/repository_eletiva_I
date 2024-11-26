@@ -33,3 +33,10 @@ function retornarPlanoPorId(int $id): ?array
     $plano = $stmt->fetch(PDO::FETCH_ASSOC);
     return $plano ? $plano : null;
 }
+
+function alterarPlano(int $id, string $nome, float $preco): bool
+{
+    global $pdo;
+    $stmt = $pdo->prepare("UPDATE plano SET nome = ?, preco = ? WHERE id = ?");
+    return $stmt->execute([$nome, $preco, $id]);
+}

@@ -3,7 +3,7 @@
     $host = "localhost";
     $db = "banco_php";
     $usuario = "root";
-    $senha = "";
+    $senha = "12345";
     $port = "3306";
 
     try{
