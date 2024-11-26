@@ -15,7 +15,7 @@
             <ul class="navbar-nav">
 
             <?php
-                if ($_SESSION['nivel' == 'adm']):
+                if ($_SESSION['nivel']== 'adm'):
             ?>
                 <li class="nav-item dropdawn">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -21,7 +21,7 @@ function excluirPlano(int $id):bool
 function todosPlanos():array
 {
     global $pdo;
-    $stmt = $pdo->prepare("SELECT * FROM plano");
+    $stmt = $pdo->query("SELECT * FROM plano");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
