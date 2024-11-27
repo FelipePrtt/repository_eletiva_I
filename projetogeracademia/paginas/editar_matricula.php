@@ -21,5 +21,31 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
+        try 
+        {
+            $id_aluno = intval($_POST['id_aluno']);
+            $id_professor = intval($_POST['id_professor']);
+            $id_plano = intval($_POST['id_plano']);
 
+            if (empty($id_aluno))
+            {
+                $erro = 'Preencha todos os campos obrigatórios!';
+            }
+            else
+            {
+                if (alterarMatricula($id_aluno, $id_professor, $id_plano, $id))
+                {
+                    header('Location: matricula.php');
+                    exit;
+                }
+                else
+                {
+                    $erro = "Erro ao alterar a matrícula!";
+                }
+            }
+        } 
+        catch (Exception $e)
+        {
+            $erro = "Erro: ".$e->getMessage();
+        }
     }

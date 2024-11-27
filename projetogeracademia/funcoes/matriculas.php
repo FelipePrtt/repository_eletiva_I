@@ -33,3 +33,10 @@ function retornarMatriculaPorId(int $id):  ?array
     $matricula = $stmt->fetch(PDO::FETCH_ASSOC);
     return $matricula ?: null;
 }
+
+function alterarMatricula(int $id, int $id_aluno, int $id_professor, int $id_plano) : bool
+{
+    global $pdo;
+    $stmt = $pdo->prepare("UPDATE matricula SET id_aluno = ?, id_professor = ?, id_plano = ? WHERE id_matricula = ?");
+    return $stmt->execute([$id_aluno, $id_professor, $id_plano, $id]);
+}
