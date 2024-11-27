@@ -33,8 +33,8 @@ function login(string $email, string $senha)
 function novoUsuario(string $nome, string $email, string $senha, string $nivel):bool
 {
     global $pdo;
-    $senha_criptografada = password_verify($senha, PASSWORD_BCRYPT);
-    $stmt = $pdo->prepare("INSERT INTO usuario (nome, email, senha, nivel VALUES (?, ?, ?, ?)");
+    $senha_criptografada = password_hash($senha, PASSWORD_BCRYPT);
+    $stmt = $pdo->prepare("INSERT INTO usuario (nome, email, senha, nivel) VALUES (?, ?, ?, ?)");
     return $stmt->execute([$nome, $email, $senha_criptografada, $nivel]);
 }
 
@@ -48,7 +48,7 @@ function excluirUsuario(int $id):bool
 function todosUsuarios(): array
 {
     global $pdo;
-    $stmt = $pdo->prepare("SELECT * FROM usuario WHERE nivel <>  'adm'");
+    $stmt = $pdo->query("SELECT * FROM usuario WHERE nivel <>  'adm'");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 

@@ -15,7 +15,6 @@
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Nível</th>
-                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -43,4 +42,4 @@
     </table>
 </div>
 
-<?php  require_once 'rodape.php';
+<?php  require_once 'rodape.php'; ?>
