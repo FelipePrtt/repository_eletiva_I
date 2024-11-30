@@ -9,7 +9,7 @@
 
 <main class="container">
     <div class="container mt-5">
-        <h2>Dashborad</h2>
+        <h2>Dashboard</h2>
 
         <div id="chart_div" style="width: 100%; height: 500px;"></div>
     </div>
