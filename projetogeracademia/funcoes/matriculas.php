@@ -40,3 +40,11 @@ function alterarMatricula(int $id, int $id_aluno, int $id_professor, int $id_pla
     $stmt = $pdo->prepare("UPDATE matricula SET id_aluno = ?, id_professor = ?, id_plano = ? WHERE id_matricula = ?");
     return $stmt->execute([$id_aluno, $id_professor, $id_plano, $id]);
 }
+
+function gerarDadosGrafico(): array
+{
+    global $pdo;
+
+    $stmt = $pdo->query("SELECT p.id_plano FROM plano p INNER JOIN matricula m ON p.id_plano = m.id_plano GROUP BY p.id_plano");
+    return $stmt ->fetchAll(PDO::FETCH_ASSOC);
+}
