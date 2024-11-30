@@ -14,7 +14,7 @@ function novoPlano(string $nome, float $preco):bool
 function excluirPlano(int $id):bool
 {
     global $pdo;
-    $stmt = $pdo->prepare("DELETE FROM plano WHERE id = ?");
+    $stmt = $pdo->prepare("DELETE FROM plano WHERE id_plano = ?");
     return $stmt->execute([$id]);
 }
 
@@ -37,6 +37,7 @@ function retornarPlanoPorId(int $id): ?array
 function alterarPlano(int $id, string $nome, float $preco): bool
 {
     global $pdo;
-    $stmt = $pdo->prepare("UPDATE plano SET nome = ?, preco = ? WHERE id = ?");
+    $stmt = $pdo->prepare("UPDATE plano SET nome = ?, preco = ? WHERE id_plano = ?");
     return $stmt->execute([$nome, $preco, $id]);
+    echo $stmt->queryString;
 }

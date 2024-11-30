@@ -30,7 +30,7 @@ function login(string $email, string $senha)
     }
 }
 
-function novoUsuario(string $nome, string $email, string $senha, string $nivel):bool
+function novoUsuario(string $nome, string $email, string $senha, string $nivel): bool
 {
     global $pdo;
     $senha_criptografada = password_hash($senha, PASSWORD_BCRYPT);
@@ -59,4 +59,11 @@ function retornarUsuarioPorId(int $id): ?array
     $stmt->execute([$id]);
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
     return $usuario ? $usuario : null;
+}
+
+function alterarUsuario(int $id, string $nome, string $email, string $senha, string $nivel): bool
+{
+    global $pdo;
+    $stmt = $pdo->prepare("UPDATE usuario SET nome = ?, email = ?, senha = ?, nivel = ? WHERE id = ?");
+    return $stmt->execute([$nome, $email, $senha, $nivel, $id]);
 }

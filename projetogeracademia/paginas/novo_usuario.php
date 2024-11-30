@@ -54,8 +54,13 @@
             <input type="password" name="senha" id="senha" class="form-control" required>
         </div>
         <div class="mb-3">
-            <label for="nivel" class="form-label">Nivel</label>
-            <input type="text" name="nivel" id="nivel" class="form-control" required>
+            <label for="nivel" class="form-label">Nível</label>
+            <select name="nivel" id="nivel" class="form-control" required>
+                <option value="">Selecione um nível</option>
+                <option value="adm">administrador</option>
+                <option value="colab">colaborador</option>
+                <option value="aluno">aluno</option>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Criar Usuário</button>
     </form>

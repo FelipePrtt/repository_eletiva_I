@@ -26,8 +26,8 @@
                 <td><?= $p['nome'] ?></td>
                 <td><?= $p['preco'] ?></td>
                 <td>
-                    <a href="editar_plano.php?id=<?= $p['id'] ?>" class="btn btn-warning">Editar</a>       
-                    <a href="excluir_plano.php?id=<?= $p['id'] ?>" class="btn btn-danger">Excluir</a>
+                    <a href="editar_plano.php?id=<?= $p['id_plano'] ?>" class="btn btn-warning">Editar</a>       
+                    <a href="excluir_plano.php?id=<?= $p['id_plano'] ?>" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
             <?php
