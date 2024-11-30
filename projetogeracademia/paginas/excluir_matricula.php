@@ -23,7 +23,7 @@
     {
         try
         {
-            $id = intval($_POST['id']);
+            $id = intval($_POST['matricula']);
             if (empty($id))
             {
                 header('Location: matriculas.php');
@@ -61,7 +61,7 @@
         <li><strong>ID Professor:</strong><?= $matricula['id_professor'] ?></li>
     </ul>
     <form method="post">
-        <input type="hidden" name="id" value="<?= $id ?>">
+        <input type="hidden" name="id_matricula" value="<?= $matricula['id'] ?>">
         <button type="submit" name="confirmar" class="btn btn-danger">Excluir</button>
         <a href="matriculas.php" class="btn btn-secondary">Cancelar</a>
     </form>

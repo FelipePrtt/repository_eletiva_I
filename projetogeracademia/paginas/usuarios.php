@@ -29,8 +29,10 @@
                 <td><?= $u['id']?></td>
                 <td><?= $u['nome']?></td>
                 <td><?= $u['email']?></td>
+                <td><?= $u['nivel']?></td>
                 <td>
-                    <?php echo $u['nivel'] == 'adm' ? 'Administrador' : 'Colaborador'; ?>
+                    <a href="editar_usuario.php?id=<?= $u['id'] ?>" class="btn btn-warning">Editar</a>
+                    <a href="excluir_usuario.php?id=<?= $u['id'] ?>" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
 

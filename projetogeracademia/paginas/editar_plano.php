@@ -23,10 +23,9 @@
     {
         try
         {
-
+            $id = intval($_POST['id']);
             $nome = $_POST['nome'];
             $preco = floatval($_POST['preco']);
-            $id = intval($_POST['id']);
             if (empty($nome))
             {
                 $erro = "Preencha os campos obrigatórios!";
@@ -60,6 +59,8 @@
 
     <form method="post">
         <input type="hidden" name="id" value="<?= $id ?>">
+        <div class="mb-3">
+        <input type="hidden" name="nome" value="<?= $id ?>">
         <div class="mb-3">
             <lable for="nome" class="form-label">Nome</lable>
             <input type="text" name="nome" value="<?= $plano['nome']?>" id="nome" class="form-control" value="" required>

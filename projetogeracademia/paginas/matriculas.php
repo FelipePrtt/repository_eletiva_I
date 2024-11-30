@@ -1,11 +1,12 @@
 <?php
     require_once 'cabecalho.php'; 
     require_once 'navbar.php';    
+    require_once '../funcoes/matriculas.php';
 ?>
 
 <div class="container mt-5">
     <h2>Gerenciamento de Matriculas</h2>
-    <a href="nova_matricula.php" class="bnt btn-primary mb-3">Nova Matricula</a>
+    <a href="nova_matricula.php" class="btn btn-primary mb-3">Nova Matricula</a>
     <table class="table table-hover table-striped">
         <thead>
             <tr>
@@ -16,18 +17,30 @@
             </tr>
         </thead>
         <tbody>
+
+        <?php
+
+            $matriculas = todasMatriculas();
+            foreach ($matriculas as $m):
+        ?>
+
             <tr>
-                <td>1</td>
-                <td>Aluno 1</td>
-                <td>Professor 1</td>
-                <td>Plano 1</td>
+                <td><?= $m['id_matricula'] ?></td>
+                <td><?= $m['id_aluno'] ?></td>
+                <td><?= $m['id_professor'] ?></td>
+                <td><?= $m['id_plano'] ?></td>
                 <td>
-                    <a href="editar_matricula.php" class="btn btn-sm btn-primary">Editar</
-                </td>
-                <td>
-                    <a href="excluir_matricula.php" class="btn btn-sm btn-primary">Editar</
+                    <a href="editar_matricula.php?id=<?= $m['id_matricula'] ?>" class="btn btn-warning">Editar</a>
+                    <a href="excluir_matricula.php?id=<?= $m['id_matricula'] ?>" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
+
+
+        <?php
+            endforeach;
+        ?>
+
+
         </tbody>
     </table>
 </div>

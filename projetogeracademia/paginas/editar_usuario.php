@@ -1,6 +1,41 @@
 <?php
     require_once 'cabecalho.php';
     require_once 'navbar.php';
+    require_once '../funcoes/usuarios.php';
+    
+    $id = $_GET['id'];
+    if (!$id) {
+        header('Location: usuarios.php');
+        exit();
+    }
+    
+    $usuario = retornarUsuarioPorId($id);
+    if (!$usuario) {
+        header('Location: usuarios.php');
+        exit();
+    }
+    
+    $erro = "";
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        try {
+            $nome = $_POST['nome'];
+            $email = $_POST['email'];
+            $senha = $_POST['senha'];
+            $nivel = $_POST['nivel'];
+            
+            $senha_criptografada = password_hash($senha, PASSWORD_BCRYPT);
+
+            if (alterarUsuario($id, $nome, $email, $senha_criptografada, $nivel)) {
+                header('Location: usuarios.php');
+                exit();
+            } else {
+                $erro = "Erro ao atualizar usuário!";
+            }
+        } catch (Exception $e) {
+            $erro = "Erro: " . $e->getMessage();
+        }
+    }
 ?>
 
 <div class="container mt-5">

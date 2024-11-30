@@ -44,7 +44,7 @@
     <h2>Nova Matrícula</h2>
 
     <?php if (!empty($erro)):?>
-        <p class="text-danger"><?= $erro ?></p>
+        <p class="text-danger">$erro</p>
     <?php endif; ?>
 
     <form method="post">
@@ -58,9 +58,9 @@
         </div>
         <div class="mb-3">
             <label for="id_plano" class="form-label">Plano:</label>
-            <select type="number" name="id_plano" id="id_plano" class="form-select" required>
+            <input type="number" name="id_plano" id="id_plano" class="form-select" required>
         </div>
-        <button type="button" class="btn btn-primary">Criar Matrícula</button>
+        <button type="submit" class="btn btn-primary">Criar Matrícula</button>
     </form>
 </div>
 
