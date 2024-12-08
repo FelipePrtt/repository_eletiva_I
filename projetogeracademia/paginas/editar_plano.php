@@ -26,6 +26,7 @@
             $id = intval($_POST['id']);
             $nome = $_POST['nome'];
             $preco = floatval($_POST['preco']);
+
             if (empty($nome))
             {
                 $erro = "Preencha os campos obrigatórios!";
@@ -50,7 +51,7 @@
     }
 ?>
 
-<div class="tontainer mt-5">
+<div class="container mt-5">
     <h2>Editar Plano</h2>
 
     <?php if (!empty($erro)):?>

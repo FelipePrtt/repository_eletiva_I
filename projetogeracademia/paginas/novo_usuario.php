@@ -4,6 +4,7 @@
     require_once '../funcoes/usuarios.php';
     
     $erro = "";
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         try
@@ -57,7 +58,6 @@
             <label for="nivel" class="form-label">Nível</label>
             <select name="nivel" id="nivel" class="form-control" required>
                 <option value="">Selecione um nível</option>
-                <option value="adm">administrador</option>
                 <option value="colab">colaborador</option>
                 <option value="aluno">aluno</option>
             </select>

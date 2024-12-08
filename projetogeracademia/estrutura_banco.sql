@@ -5,6 +5,7 @@ CREATE TABLE usuario (
     senha VARCHAR(255) NOT NULL,
     nivel ENUM('adm', 'colab', 'aluno') NOT NULL
 );
+
 create table plano(
     id_plano INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
