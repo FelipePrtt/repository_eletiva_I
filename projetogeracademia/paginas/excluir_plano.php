@@ -51,7 +51,7 @@
 ?>
 
 <div class="container mt-5">
-    <h2>Excluir Produto</h2>
+    <h2>Excluir Plano</h2>
 
     <p>Tem certeza de que deseja excluir o plano abaixo?</p>
     <ul>

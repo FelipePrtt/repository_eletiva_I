@@ -45,6 +45,9 @@ function gerarDadosGrafico(): array
 {
     global $pdo;
 
-    $stmt = $pdo->query("SELECT p.id_plano FROM plano p INNER JOIN matricula m ON p.id_plano = m.id_plano GROUP BY p.id_plano");
+    $stmt = $pdo->query("SELECT p.id_plano 
+                            FROM plano p 
+                            INNER JOIN matricula m ON p.id_plano = m.id_plano 
+                            GROUP BY p.id_plano");
     return $stmt ->fetchAll(PDO::FETCH_ASSOC);
 }
