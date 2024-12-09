@@ -4,7 +4,6 @@
     require_once '../funcoes/matriculas.php';
 
     $dados = gerarDadosGrafico();
-
 ?>
 
 <main class="container">
@@ -23,25 +22,25 @@
         function drawChart() 
         {
             var data = google.visualization.arrayToDataTable([
-                ['Matrícula', 'Quantidade', {role: 'style'}],
+                ['Plano', 'Quantidade', {role: 'style'}],
                 <?php foreach ($dados as $d): ?>
-                    ['<?= $d['matricula'] ?>', <?= $d['quantidade'] ?>, 'magenta'],
+                    ['<?= $d['nome'] ?>', <?= $d['quantidade'] ?>, 'magenta'],
                 <?php endforeach; ?>
-            ])
-        }
-        
-        var options =
-        {
-            title: 'Matrículas',
-            hAxis: {title: 'Planos', titleTextStyle: {color: '#333'}},
-            vAxis: {minValue: 0},
-            chartArea: {width: '70%', heigth: '70%'}
-        }
+            ]);
 
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
+            var options =
+            {
+                title: 'Matrículas',
+                hAxis: {title: 'Planos', titleTextStyle: {color: '#333'}},
+                vAxis: {minValue: 0},
+                chartArea: {width: '70%', height: '70%'}
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
         
-        </script>
+    </script>
 </main>
 
 <?php require_once 'rodape.php'; ?>

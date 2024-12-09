@@ -33,9 +33,9 @@
             }
             else
             {
-                if (alterarMatricula($id_aluno, $id_professor, $id_plano, $id))
+                if (alterarMatricula($id, $id_aluno, $id_professor, $id_plano))
                 {
-                    header('Location: matricula.php');
+                    header('Location: matriculas.php');
                     exit;
                 }
                 else
@@ -72,6 +72,7 @@
             <label for="id_professor" class="form-label">ID Professor</label>
             <input type="number" name="id_professor" value="<?= $matricula['id_professor'] ?>" id="id_professor" class="form-control" value="" require>
         </div>
+        <input type="hidden" name="matricula" value="<?= $matricula['id_matricula'] ?>"/>
         <button type="submit" class="btn btn-primary">Atualizar Matricula</button>
     </form>
 </div>

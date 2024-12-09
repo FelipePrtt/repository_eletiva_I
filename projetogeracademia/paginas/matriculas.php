@@ -6,7 +6,7 @@
 
 <div class="container mt-5">
     <h2>Gerenciamento de Matriculas</h2>
-    <a href="nova_matricula.php" class="btn btn-primary mb-3">Nova Matricula</a>
+    <a href="nova_matricula.php" class="btn btn-success mb-3">Nova Matricula</a>
     <table class="table table-hover table-striped">
         <thead>
             <tr>

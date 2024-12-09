@@ -31,7 +31,7 @@
             }
             else
             {
-                if (excluirMatricula(($id)))
+                if (excluirMatricula($id))
                 {
                     header('Location: matriculas.php');
                     exit();
@@ -61,7 +61,7 @@
         <li><strong>ID Professor:</strong><?= $matricula['id_professor'] ?></li>
     </ul>
     <form method="post">
-        <input type="hidden" name="id_matricula" value="<?= $matricula['id'] ?>">
+        <input type="hidden" name="matricula" value="<?= $matricula['id_matricula'] ?>"/>
         <button type="submit" name="confirmar" class="btn btn-danger">Excluir</button>
         <a href="matriculas.php" class="btn btn-secondary">Cancelar</a>
     </form>

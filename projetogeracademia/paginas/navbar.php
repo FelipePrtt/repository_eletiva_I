@@ -7,7 +7,7 @@
 
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/dashborad">Sistema de Gerenciamento de Acadamia</a>
+        <a class="navbar-brand" href="dashboard.php">Sistema de Gerenciamento de Acadamia</a>
         <button class="navbar-toggler" type="button" data-bs-theme="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
