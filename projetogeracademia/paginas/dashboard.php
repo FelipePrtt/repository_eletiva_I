@@ -22,7 +22,12 @@
 
         function drawChart() 
         {
-            var data = google.visualization.arrayToDataTable([])
+            var data = google.visualization.arrayToDataTable([
+                ['Matrícula', 'Quantidade', {role: 'style'}],
+                <?php foreach ($dados as $d): ?>
+                    ['<?= $d['matricula'] ?>', <?= $d['quantidade'] ?>, 'magenta'],
+                <?php endforeach; ?>
+            ])
         }
         
         var options =
